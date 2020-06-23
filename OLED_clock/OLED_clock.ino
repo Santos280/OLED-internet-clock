@@ -16,8 +16,8 @@ Adafruit_SSD1306 display(128,64,&Wire,-1);
 WiFiUDP ntp;
 NTPClient timeclient(ntp,"asia.pool.ntp.org",utcoffset);
 
-const char *ssid= "Most wanted Open";               // enter SSID of your WiFi router
-const char *password= "1234shubham";        // enter password of the router
+const char *ssid= "your SSID";               // enter SSID of your WiFi router
+const char *password= "your Password";        // enter password of the router
 String Week[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 
 void setup() {
@@ -79,7 +79,7 @@ display.setTextColor(WHITE);
 
   // put your setup code here, to run once:
 
-const int xcenter=90;  //x and y center points for clock
+const int xcenter=95;  //x and y center points for clock
 const int ycenter=32;   
 const int radius=30;    // radius of clock
 
@@ -110,15 +110,7 @@ void loop() {
   
   // to display clock
   
-  display.drawCircle(xcenter,ycenter,radius,WHITE);
-  display.setCursor(86,4);
-  display.print("12");
-  display.setCursor(113,32);
-  display.print('3');
-  display.setCursor(88,52);
-  display.print('6');
-  display.setCursor(62,32);
-  display.print('9');
+  
   displaytime(timeclient.getHours(),timeclient.getMinutes(),timeclient.getSeconds());
   display.display();
   display.clearDisplay();
@@ -127,6 +119,15 @@ void loop() {
 
 void displaytime(int hours,int mins,int secs)
 {
+  display.drawCircle(xcenter,ycenter,radius,WHITE);
+  display.setCursor(90,4);
+  display.print("12");
+  display.setCursor(117,32);
+  display.print('3');
+  display.setCursor(92,52);
+  display.print('6');
+  display.setCursor(68,30);
+  display.print('9');
   int Sangle=secs*6;                        // second angle 
   int Mangle=mins*6;                         //minute angle
   int Hangle;                            // hour angle
